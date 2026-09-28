@@ -730,8 +730,8 @@ jobs:
                | if . == null then "" else (.archive_download_url + "\t" + .digest) end' \
               "$page_file")"
 
-            items="$(jq '(.artifacts \vert{} length) // 0' "$page_file")"
-            if [ "$items" -lt 100 ] \vert{}\vert{} [ -n "$match" ]; then
+            items="$(jq '(.artifacts | length) // 0' "$page_file")"
+            if [ "$items" -lt 100 ] || [ -n "$match" ]; then
               break
             fi
             page=$((page + 1))
