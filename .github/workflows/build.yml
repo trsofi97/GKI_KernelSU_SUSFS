@@ -125,6 +125,7 @@ jobs:
         os_patch_level: ${{ inputs.os_patch_level }}
 
     - name: Apply Seccomp and RMNET UDP Fixes
+      working-directory: ${{ github.workspace }}/kernel/common
       shell: bash
       run: |
         # 1. Enable Seccomp and BPF Routing in GKI defconfig
